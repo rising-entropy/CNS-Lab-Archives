@@ -31,9 +31,33 @@ def generatekeyMatrix(key):
     
     return keyMatrix
 
-
+def generatePlainTextDiagraphs(plaintext):
+    # Replace all J with I
+    plaintext = plaintext.replace("J", "I")
+    lstOfDraphs = []
+    aDiagraph = ""
+    for i in range(len(plaintext)):
+        if len(aDiagraph) == 0:
+            aDiagraph+=plaintext[i]
+        elif len(aDiagraph) == 1:
+            if plaintext[i] == aDiagraph:
+                aDiagraph += "X"
+                lstOfDraphs.append(aDiagraph)
+                aDiagraph = plaintext[i]
+            else:
+                aDiagraph += plaintext[i]
+                lstOfDraphs.append(aDiagraph)
+                aDiagraph = ""
+    if len(aDiagraph) == 1:
+        aDiagraph+="Z"
+        lstOfDraphs.append(aDiagraph)
+    return lstOfDraphs
 
 plaintext = "LONDONBRIDGEHASFALLEN"
 key = "JACKANDJILL"
 
-print(generatekeyMatrix(key))
+keyMatrix = generatekeyMatrix(key)
+
+plainTextDiagraphs = generatePlainTextDiagraphs(plaintext)
+
+print(plainTextDiagraphs)
