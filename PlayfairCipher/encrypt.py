@@ -53,6 +53,12 @@ def generatePlainTextDiagraphs(plaintext):
         lstOfDraphs.append(aDiagraph)
     return lstOfDraphs
 
+def getPositionOfACharInKeyMatrix(keyMatrix, c):
+    for i in range(5):
+        for j in range(5):
+            if keyMatrix[i][j] == c:
+                return i,j
+
 plaintext = "LONDONBRIDGEHASFALLEN"
 key = "JACKANDJILL"
 
@@ -60,4 +66,31 @@ keyMatrix = generatekeyMatrix(key)
 
 plainTextDiagraphs = generatePlainTextDiagraphs(plaintext)
 
-print(plainTextDiagraphs)
+encryptedDigraphs = []
+
+for ptd in plainTextDiagraphs:
+    c1Row, c1Col = getPositionOfACharInKeyMatrix(keyMatrix, ptd[0])
+    c2Row, c2Col = getPositionOfACharInKeyMatrix(keyMatrix, ptd[1])
+
+    newDiagraph = ""
+
+    # if both are in same column
+    if c1Col == c2Col:
+        newDiagraph+=keyMatrix[(c1Row+1)%5][c1Col]
+        newDiagraph+=keyMatrix[(c2Row+1)%5][c2Col]
+        encryptedDigraphs.append(newDiagraph)
+
+    # if both are in same row
+    elif c1Row == c2Row:
+        newDiagraph+=keyMatrix[c1Row][(c1Col+1)%5]
+        newDiagraph+=keyMatrix[c2Row][(c2Col+1)%5]
+        encryptedDigraphs.append(newDiagraph)
+
+    # else
+    else:
+        newDiagraph+=keyMatrix[c1Row][c2Col]
+        newDiagraph+=keyMatrix[c2Row][c1Col]
+        encryptedDigraphs.append(newDiagraph)
+
+print("Plaintext: "+plaintext)
+print("Encrypted Text: "+ "".join(encryptedDigraphs))
