@@ -59,23 +59,16 @@ def getPositionOfACharInKeyMatrix(keyMatrix, c):
             if keyMatrix[i][j] == c:
                 return i,j
 
-plaintext = "LONDONBRIDGEHASFALLEN"
+enctext = "EHDATELSFAOIGCUBCIBFDY"
 key = "JACKANDJILL"
 
 keyMatrix = generatekeyMatrix(key)
 
-plainTextDiagraphs = generatePlainTextDiagraphs(plaintext)
+encTextDiagraphs = generatePlainTextDiagraphs(enctext)
 
-encryptedDigraphs = []
+decryptedDigraphs = []
 
-print(plainTextDiagraphs)
-print(keyMatrix[0])
-print(keyMatrix[1])
-print(keyMatrix[2])
-print(keyMatrix[3])
-print(keyMatrix[4])
-
-for ptd in plainTextDiagraphs:
+for ptd in encTextDiagraphs:
     c1Row, c1Col = getPositionOfACharInKeyMatrix(keyMatrix, ptd[0])
     c2Row, c2Col = getPositionOfACharInKeyMatrix(keyMatrix, ptd[1])
 
@@ -83,21 +76,21 @@ for ptd in plainTextDiagraphs:
 
     # if both are in same column
     if c1Col == c2Col:
-        newDiagraph+=keyMatrix[(c1Row+1)%5][c1Col]
-        newDiagraph+=keyMatrix[(c2Row+1)%5][c2Col]
-        encryptedDigraphs.append(newDiagraph)
+        newDiagraph+=keyMatrix[(c1Row-1)%5][c1Col]
+        newDiagraph+=keyMatrix[(c2Row-1)%5][c2Col]
+        decryptedDigraphs.append(newDiagraph)
 
     # if both are in same row
     elif c1Row == c2Row:
-        newDiagraph+=keyMatrix[c1Row][(c1Col+1)%5]
-        newDiagraph+=keyMatrix[c2Row][(c2Col+1)%5]
-        encryptedDigraphs.append(newDiagraph)
+        newDiagraph+=keyMatrix[c1Row][(c1Col-1)%5]
+        newDiagraph+=keyMatrix[c2Row][(c2Col-1)%5]
+        decryptedDigraphs.append(newDiagraph)
 
     # else
     else:
         newDiagraph+=keyMatrix[c1Row][c2Col]
         newDiagraph+=keyMatrix[c2Row][c1Col]
-        encryptedDigraphs.append(newDiagraph)
+        decryptedDigraphs.append(newDiagraph)
 
-print("Plaintext: "+plaintext)
-print("Encrypted Text: "+ "".join(encryptedDigraphs))
+print("Encrypted Text: "+enctext)
+print("Plain Text: "+ "".join(decryptedDigraphs))
