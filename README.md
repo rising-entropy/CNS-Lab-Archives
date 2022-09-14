@@ -2,11 +2,11 @@
 
 CNS Lab Assignments:
 * event based input
-- Caesar
+- Caesar .
 - Cryptanalysis -> find meaningful out of dictionary
-- Playfair
+- Playfair .
 - Vignere Cipher
-- Transposition Cipher - Railfence
+- Transposition Cipher - Railfence .
 - Transposition Cipher - Columnar
 - DES Algo - Part (a) - Just I/P O/P through VLab
 - DES Algo - Part (b) - Implementation
