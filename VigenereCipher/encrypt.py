@@ -25,7 +25,27 @@ def generateCircularKeyOfLength(key, size):
 
 vigenereMatrix = generateVigenereMatrix()
 
-print(generateCircularKeyOfLength("DEVANG", 16))
+
 plaintext = "LONDONBRIDGEHASFALLEN"
 key = "DEVANG"
+
+circularKey = generateCircularKeyOfLength(key, len(plaintext))
+
+# To encrypt -> Row Index -> Plaintext, Col Index -> CipherText
+
+encryptedText = ""
+
+for i in range(len(plaintext)):
+    rowIndex = ord(plaintext[i])-65
+    colIndex = ord(circularKey[i])-65
+    encryptedText += vigenereMatrix[rowIndex][colIndex]
+
+print(circularKey)
+printMatrix(vigenereMatrix)
+
+print()
+print()
+
+print("Plaintext:", plaintext)
+print("Encrypted Text", encryptedText)
 
