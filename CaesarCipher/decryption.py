@@ -10,29 +10,12 @@ def shiftCharWithKeyDecrypt(c, step):
     return chr(amt)
 
 ciphertext = "KHLOKLWOHUZHDUHJRLQJWRERPEKLURVKLPD"
+key = 3
 
-textToCheck = ciphertext[0:10]
+plaintext = ""
 
-# Get all shift combos to guess the shift amt
-
-# From 0 to 26
-possibleShiftedCombos = []
-for shift in range(26):
-    theString = ""
-    for i in textToCheck:
-        theString += shiftCharWithKeyDecrypt(i, shift)
-    possibleShiftedCombos.append(theString)
-
-shiftValue = 0
-
-for i in range(len(possibleShiftedCombos)):
-    if possibleShiftedCombos[i] == "HEILHITLER":
-        shiftValue = i
-        break
-
-decryptedText = ""
 for i in ciphertext:
-    decryptedText += shiftCharWithKeyDecrypt(i, shiftValue)
+    plaintext += shiftCharWithKeyDecrypt(i, key)
 
 print("Ciphertext: "+ciphertext)
-print("Decrypted Plaintext: "+decryptedText)
+print("Decrypted Plaintext: "+plaintext)

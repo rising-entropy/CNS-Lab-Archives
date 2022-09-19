@@ -7,8 +7,8 @@ def shiftCharWithKey(c, step):
     amt += 65
     return chr(amt)
 
-value = "HEILHITLERWEAREGOINGTOBOMBHIROSHIMA"
-shift = 3
+value = "HOLIDAY"
+shift = 7
 
 encryptedValue = ""
 
