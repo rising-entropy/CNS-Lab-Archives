@@ -5,9 +5,9 @@ CNS Lab Assignments:
 - Caesar .
 - Cryptanalysis -> find meaningful out of dictionary
 - Playfair .
-- Vignere Cipher
+- Vignere Cipher .
 - Transposition Cipher - Railfence .
-- Transposition Cipher - Columnar
+- Transposition Cipher - Columnar .
 - DES Algo - Part (a) - Just I/P O/P through VLab
 - DES Algo - Part (b) - Implementation
 - AES Algo - Part (a) - Just I/P O/P through VLab
