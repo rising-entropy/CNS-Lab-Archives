@@ -1,4 +1,3 @@
-
 def shiftCharWithKey(c, step):
     amt = ord(c)
     amt -= 65

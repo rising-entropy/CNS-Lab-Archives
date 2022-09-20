@@ -10,7 +10,8 @@ def shiftCharWithKeyDecrypt(c, step):
     amt += 65
     return chr(amt)
 
-cipherword = "OVSPKHF"
+print("Enter the Cipherword: ",end='')
+cipherword = input()
 
 # Get all shift combos to guess the shift amt
 # From 0 to 26
@@ -32,6 +33,9 @@ decryptedText = ""
 for i in cipherword:
     decryptedText += shiftCharWithKeyDecrypt(i, shiftValue)
 
+print("Possible Values of Plaintext:")
+print(possibleShiftedCombos)
+print()
 print("Ciphertext: "+cipherword)
 print("Key:", shiftValue)
 print("Decrypted Plaintext: "+decryptedText)

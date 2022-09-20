@@ -1,6 +1,3 @@
-
-# We don't know the shift amount but we know the string starts with HEILHITLER
-
 def shiftCharWithKeyDecrypt(c, step):
     amt = ord(c)
     amt -= 65
@@ -11,8 +8,8 @@ def shiftCharWithKeyDecrypt(c, step):
 
 def chooseTypeOfInput():
     print("Choose your method:")
-    print("1. Encrypt a File.")
-    print("2. Encrypt an Input.")
+    print("1. Decrypt a File.")
+    print("2. Decrypt an Input.")
     print("Please Enter Type of Input: ", end='')
     n = int(input())
     if n == 1 or n == 2:
