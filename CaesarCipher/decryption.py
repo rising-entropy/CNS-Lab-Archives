@@ -9,13 +9,37 @@ def shiftCharWithKeyDecrypt(c, step):
     amt += 65
     return chr(amt)
 
-ciphertext = "KHLOKLWOHUZHDUHJRLQJWRERPEKLURVKLPD"
-key = 3
+def chooseTypeOfInput():
+    print("Choose your method:")
+    print("1. Encrypt a File.")
+    print("2. Encrypt an Input.")
+    print("Please Enter Type of Input: ", end='')
+    n = int(input())
+    if n == 1 or n == 2:
+        return n
+    print("Incorrect choice. Try Again!")
+    chooseTypeOfInput()
+
+choice = chooseTypeOfInput()
+
+ciphertext=0
+shift = 0
+
+if choice == 1:
+    f = open("dec.txt", "r")
+    ciphertext = f.readline()
+
+else:
+    print("Enter the Plaintext: ", end='')
+    ciphertext = input()
+
+print("Enter the Shift Key Value: ", end='')
+shift = int(input())
 
 plaintext = ""
 
 for i in ciphertext:
-    plaintext += shiftCharWithKeyDecrypt(i, key)
+    plaintext += shiftCharWithKeyDecrypt(i, shift)
 
 print("Ciphertext: "+ciphertext)
 print("Decrypted Plaintext: "+plaintext)
