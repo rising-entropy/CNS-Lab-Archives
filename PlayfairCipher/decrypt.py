@@ -5,9 +5,14 @@ alphabetsList = []
 for a in alphabets:
     alphabetsList.append(a)
 
+def printMatrix(fenceMatrix):
+    for i in range(len(fenceMatrix)):
+        for j in range(len(fenceMatrix[0])):
+            print(fenceMatrix[i][j], end=' ')
+        print()
+
 def generatekeyMatrix(key):
     # We are to make a 5*5 matrix
-
     # Splitting the key to a list
     keySet = []
     for k in key:
@@ -21,14 +26,12 @@ def generatekeyMatrix(key):
         if a != 'J':
             if a not in keySet:
                 keySet.append(a)
-
     keyMatrix = []
     keyMatrix.append(keySet[0:5])
     keyMatrix.append(keySet[5:10])
     keyMatrix.append(keySet[10:15])
     keyMatrix.append(keySet[15:20])
     keyMatrix.append(keySet[20:25])
-    
     return keyMatrix
 
 def generatePlainTextDiagraphs(plaintext):
@@ -59,12 +62,20 @@ def getPositionOfACharInKeyMatrix(keyMatrix, c):
             if keyMatrix[i][j] == c:
                 return i,j
 
-enctext = "EHDATELSFAOIGCUBCIBFDY"
-key = "JACKANDJILL"
+print("Playfair Cipher")
+print("Enter Encrypted Text: ", end='')
+enctext = input()
+print("Enter Key: ", end='')
+key = input()
 
 keyMatrix = generatekeyMatrix(key)
 
+print("\nKey Matrix")
+printMatrix(keyMatrix)
+
 encTextDiagraphs = generatePlainTextDiagraphs(enctext)
+print("\nEnc Text Diagraphs")
+print(encTextDiagraphs)
 
 decryptedDigraphs = []
 

@@ -30,8 +30,11 @@ def getIndexFromRow(theRow, char):
 
 vigenereMatrix = generateVigenereMatrix()
 
-encryptedText = "OSIDBTEVDDTKKENFNROII"
-key = "DEVANG"
+print("Vigenere Cipher")
+print("Enter Encrypted Text: ", end='')
+encryptedText = input()
+print("Enter the Key: ", end='')
+key = input()
 
 circularKey = generateCircularKeyOfLength(key, len(encryptedText))
 
@@ -44,7 +47,10 @@ for i in range(len(encryptedText)):
     plainTextValue = chr(getIndexFromRow(vigenereMatrix[rowIndex], encryptedText[i])+65)
     plaintext += plainTextValue
 
+print("\nCircular Key: ", end='')
 print(circularKey)
+
+print("\nVigenere Table:")
 printMatrix(vigenereMatrix)
 
 print()

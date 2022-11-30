@@ -23,14 +23,7 @@ def printMatrix(fenceMatrix):
         for j in range(len(fenceMatrix[0])):
             print(fenceMatrix[i][j], end=' ')
         print()
-
-def getOrderIndexFromChar(keyMatrix, theChar):
-    for i in range(len(keyMatrix[0])):
-        if keyMatrix[1][i] == False:
-            if theChar == keyMatrix[0][i]:
-                keyMatrix[1][i] == True
-                return i+1
-
+        
 def getKeyOrderList(theKey):
     key = [*theKey]
     order = []
@@ -41,10 +34,14 @@ def getKeyOrderList(theKey):
     for i in range(len(sortedKey)):
         theUsedBool.append(False)
     sortedKeyMatrix.append(theUsedBool)
-    
+    print(sortedKeyMatrix)
     for i in key:
-        order.append(getOrderIndexFromChar(sortedKeyMatrix, i))
-    
+        for j in range(len(sortedKeyMatrix[0])):
+            if sortedKeyMatrix[1][j] == False:
+                if i == sortedKeyMatrix[0][j]:
+                    sortedKeyMatrix[1][j] = True
+                    order.append(j+1)
+                    break
     return order
 
 def plaintextToMatrixOfKey(plaintext, keySize):
@@ -64,15 +61,21 @@ def plaintextToMatrixOfKey(plaintext, keySize):
             theMatrixRow = []
     return keyMatrix
 
-plaintext = "LONDONBRIDGEHASFALLEN"
-key = "DEVANG"
+print("Columnar Transposition Cipher\n")
+print("Enter Plaintext: ", end='')
+plaintext = input()
+print("Enter Key: ", end='')
+key = input()
 
 columnarTranspositionMatrix = []
 columnarTranspositionMatrix.append([*key])
 columnarTranspositionMatrix.append(getKeyOrderList(key))
 
 # print(columnarTranspositionMatrix)
-columnarTranspositionMatrix += plaintextToMatrixOfKey("LONDONBRIDGEHASFALLEN", 6)
+columnarTranspositionMatrix += plaintextToMatrixOfKey(plaintext, len(key))
+
+print("Columnar Transposition Matrix:")
+printMatrix(columnarTranspositionMatrix)
 
 encryptedText = generateEncryptedTextFromColumnarTranspositionMatrix(columnarTranspositionMatrix)
 

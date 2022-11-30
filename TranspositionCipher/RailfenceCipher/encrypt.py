@@ -14,8 +14,11 @@ def getEncryptedTextFromFenceMatrix(fenceMatrix):
                 encText += fenceMatrix[i][j]
     return encText
 
-plaintext = "LONDONBRIDGEHASFALLEN"
-rails_count = 3
+print("Rail Fence Encrypt\n")
+print("Enter Plaintext: ", end='')
+plaintext = input()
+print("Enter Fence Size: ", end='')
+rails_count = int(input())
 
 fenceMatrix = []
 # No. of Rows -> No. of Rails
@@ -28,6 +31,9 @@ for i in range(rails_count):
     for j in range(noOfCols):
         individualFence.append("-")
     fenceMatrix.append(individualFence)
+
+print("\nInitial Fence Matrix:")
+printMatrix(fenceMatrix)
 
 rowIndex = 0
 colIndex = 0
@@ -47,7 +53,7 @@ for c in plaintext:
     colIndex += 1
 
 while True:
-    fenceMatrix[rowIndex][colIndex] = 'X'
+    fenceMatrix[rowIndex][colIndex] = '-'
     if slopeDown:
         rowIndex += 1
         if (rowIndex+1) > rails_count:
@@ -58,7 +64,8 @@ while True:
             break
     colIndex += 1
 
+print("\nFence Matrix with the Plaintext:")
 printMatrix(fenceMatrix)
-
+print()
 print("Plaintext:", plaintext)
 print("Encrypted Text: ",getEncryptedTextFromFenceMatrix(fenceMatrix))

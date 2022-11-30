@@ -5,6 +5,13 @@ alphabetsList = []
 for a in alphabets:
     alphabetsList.append(a)
 
+def printMatrix(fenceMatrix):
+    for i in range(len(fenceMatrix)):
+        for j in range(len(fenceMatrix[0])):
+            print(fenceMatrix[i][j], end=' ')
+        print()
+
+
 def generatekeyMatrix(key):
     # We are to make a 5*5 matrix
 
@@ -59,21 +66,24 @@ def getPositionOfACharInKeyMatrix(keyMatrix, c):
             if keyMatrix[i][j] == c:
                 return i,j
 
-plaintext = "LONDONBRIDGEHASFALLEN"
-key = "JACKANDJILL"
+print("Playfair Cipher")
+print("Enter Plaintext: ", end='')
+plaintext = input()
+print("Enter Key: ", end='')
+key = input()
 
 keyMatrix = generatekeyMatrix(key)
 
+print("\nKey Matrix")
+print(keyMatrix)
+
 plainTextDiagraphs = generatePlainTextDiagraphs(plaintext)
 
+print("\nPlaintext Diagraphs")
 encryptedDigraphs = []
 
 print(plainTextDiagraphs)
-print(keyMatrix[0])
-print(keyMatrix[1])
-print(keyMatrix[2])
-print(keyMatrix[3])
-print(keyMatrix[4])
+printMatrix(keyMatrix)
 
 for ptd in plainTextDiagraphs:
     c1Row, c1Col = getPositionOfACharInKeyMatrix(keyMatrix, ptd[0])

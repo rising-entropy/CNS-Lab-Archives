@@ -25,9 +25,11 @@ def generateCircularKeyOfLength(key, size):
 
 vigenereMatrix = generateVigenereMatrix()
 
-
-plaintext = "LONDONBRIDGEHASFALLEN"
-key = "DEVANG"
+print("Vigenere Cipher")
+print("Enter Plaintext: ", end='')
+plaintext = input()
+print("Enter the Key: ", end='')
+key = input()
 
 circularKey = generateCircularKeyOfLength(key, len(plaintext))
 
@@ -40,7 +42,10 @@ for i in range(len(plaintext)):
     colIndex = ord(circularKey[i])-65
     encryptedText += vigenereMatrix[rowIndex][colIndex]
 
+print("\nCircular Key: ", end='')
 print(circularKey)
+
+print("\nVigenere Table:")
 printMatrix(vigenereMatrix)
 
 print()

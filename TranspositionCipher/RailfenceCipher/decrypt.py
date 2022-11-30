@@ -6,8 +6,11 @@ def printMatrix(fenceMatrix):
             print(fenceMatrix[i][j], end='')
         print()
 
-encryptedText = "LOIHANODNRDEAFLEXNBGSLX"
-rails_count = 3
+print("Rail Fence Decrypt\n")
+print("Enter Encrypted Text: ", end='')
+encryptedText = input()
+print("Enter Fence Size: ", end='')
+rails_count = int(input())
 
 fenceMatrix = []
 # No. of Rows -> No. of Rails
@@ -39,6 +42,9 @@ for c in range(len(encryptedText)):
             rowIndex += 2
     colIndex += 1
 
+print("\nInitial Fence Matrix:")
+printMatrix(fenceMatrix)
+
 # Replace * with the Encrypted Text
 encTextIndex = 0
 for i in range(rails_count):
@@ -66,6 +72,10 @@ for c in range(len(encryptedText)):
             slopeDown = True
             rowIndex += 2
     colIndex += 1
+
+print("\nFence Matrix with the Encrypted Text:")
+printMatrix(fenceMatrix)
+print()
 
 print("Encrypted Text:", encryptedText)
 print("Plaintext:", plaintext)
