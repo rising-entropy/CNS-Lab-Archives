@@ -1,5 +1,8 @@
 from prettytable import PrettyTable
 
+
+
+
 def gcd(a, b):
     # ensure that a is always the larger number
     if b > a:
@@ -43,4 +46,7 @@ for i in theGCDData:
 
 print("\nThe Extended Euclid Table:")
 print(x)
-print("\nThe M.I. of "+str(a)+"%"+str(b)+" is: "+str(theGCDData[len(theGCDData)-1][4]))
+if theGCDData[len(theGCDData)-1][1] == 1:
+    print("\nThe M.I. of "+str(a)+"%"+str(b)+" is: "+str(theGCDData[len(theGCDData)-1][4]))
+else:
+    print("Since both the numbers are not relatively prime, M.I. does not exist.")
